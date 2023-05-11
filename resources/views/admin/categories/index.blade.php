@@ -39,7 +39,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Название категории</th>
-                                        <th colspan="2">Действие</th>
+                                        <th colspan="3" class="text-center">Действие</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -47,8 +47,17 @@
                                         <tr>
                                             <td>{{ $category->id }}</td>
                                             <td>{{ $category->title }}</td>
-                                            <td><a href="{{ route('admin.category.show', $category->id) }}"><img width="20" height="20" src="{{ asset('img/eye-solid.svg') }}" alt=""></a></td>
-                                            <td><a href="{{ route('admin.category.edit', $category->id) }}"><img width="20" height="20" src="{{ asset('img/pencil-solid.svg') }}" alt=""></a></td>
+                                            <td class="text-center"><a href="{{ route('admin.category.show', $category->id) }}"><img width="20" height="20" src="{{ asset('img/eye-solid.svg') }}" alt=""></a></td>
+                                            <td class="text-center"><a href="{{ route('admin.category.edit', $category->id) }}"><img width="20" height="20" src="{{ asset('img/pencil-solid.svg') }}" alt=""></a></td>
+                                            <td class="text-center">
+                                                <form action="{{ route('admin.category.delete', $category->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="border-0 bg-transparent">
+                                                        <img width="20" height="20" src="{{ asset('img/trash-solid.svg') }}" alt="">
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
