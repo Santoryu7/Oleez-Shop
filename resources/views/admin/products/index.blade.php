@@ -25,6 +25,9 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
+                    <div class="col-1">
+                        <a href="{{ route('admin.product.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                    </div>
                     <!-- ./col -->
                 </div>
                 <!-- /.row -->
