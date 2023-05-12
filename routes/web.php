@@ -34,6 +34,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
     Route::group(['namespace' => 'Product', 'prefix' => 'products'], function () {
         Route::get('/', 'IndexController')->name('admin.product.index');
+        Route::get('/create', 'CreateController')->name('admin.product.create');
     });
 });
 
