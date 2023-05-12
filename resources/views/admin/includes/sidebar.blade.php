@@ -12,6 +12,13 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.product.index') }}" class="nav-link">
+                    <p>
+                        Товары
+                    </p>
+                </a>
+            </li>
         </ul>
 
     </div>
