@@ -31,6 +31,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::patch('/{category}', 'UpdateController')->name('admin.category.update');
         Route::delete('/{category}', 'DeleteController')->name('admin.category.delete');
     });
+
+    Route::group(['namespace' => 'Product', 'prefix' => 'products'], function () {
+        Route::get('/', 'IndexController')->name('admin.product.index');
+    });
 });
 
 Auth::routes();
