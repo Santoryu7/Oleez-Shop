@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Товары</h1>
+                        <h1 class="m-0">{{ $product->title }}</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -25,35 +25,33 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row mb-3">
-                    <div class="col-1">
-                        <a href="{{ route('admin.product.create') }}" class="btn btn-block btn-primary">Добавить</a>
-                    </div>
-                    <!-- ./col -->
-                </div>
-                <div class="row">
                     <div class="col-6">
                         <div class="card">
+                            <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-hover text-nowrap">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Название товара</th>
-                                        <th>Действие</th>
-                                    </tr>
-                                    </thead>
                                     <tbody>
-                                    @foreach($products as $product)
-                                        <tr>
-                                            <td>{{ $product->id }}</td>
-                                            <td>{{ $product->title }}</td>
-                                            <td><a href="{{ route('admin.product.show', $product->id) }}"><img width="20" height="20" src="{{ asset('img/eye-solid.svg') }}" alt=""></a></td>
-                                        </tr>
-                                    @endforeach
+                                    <tr>
+                                        <td>Название</td>
+                                        <td>Id</td>
+                                        <th>Цена</th>
+                                        <th>Кол-во на складе</th>
+                                        <th>Категория</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ $product->title }}</td>
+                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $product->price }}</td>
+                                        <td>{{ $product->count }}</td>
+                                        <td>{{ $product->category_id }}</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
+                            <!-- /.card-body -->
                         </div>
+                        <!-- /.card -->
+                        <!-- ./col -->
                     </div>
                 </div>
                 <!-- /.row -->
