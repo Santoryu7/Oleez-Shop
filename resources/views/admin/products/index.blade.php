@@ -39,7 +39,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Название товара</th>
-                                        <th>Действие</th>
+                                        <th colspan="2">Действие</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -48,6 +48,7 @@
                                             <td>{{ $product->id }}</td>
                                             <td>{{ $product->title }}</td>
                                             <td><a href="{{ route('admin.product.show', $product->id) }}"><img width="20" height="20" src="{{ asset('img/eye-solid.svg') }}" alt=""></a></td>
+                                            <td><a href="{{ route('admin.product.edit', $product->id) }}"><img width="20" height="20" src="{{ asset('img/pencil-solid.svg') }}" alt=""></a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
