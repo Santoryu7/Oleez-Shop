@@ -24,11 +24,41 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-1">
                         <a href="{{ route('admin.product.create') }}" class="btn btn-block btn-primary">Добавить</a>
                     </div>
                     <!-- ./col -->
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Название товара</th>
+                                        <th>Цена</th>
+                                        <th>Кол-во на складе</th>
+                                        <th>Категория</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($products as $product)
+                                        <tr>
+                                            <td>{{ $product->id }}</td>
+                                            <td>{{ $product->title }}</td>
+                                            <td>{{ $product->price }}</td>
+                                            <td>{{ $product->count }}</td>
+                                            <td>{{ $product->category_id }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
