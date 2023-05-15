@@ -6,8 +6,9 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">{{ $product->title }}</h1>
+                    <div class="col-sm-6 d-flex align-items-center">
+                        <h1 class="m-0 mr-2">{{ $product->title }}</h1>
+                        <a href="{{ route('admin.product.edit', $product->id) }}"><img width="20" height="20" src="{{ asset('img/pencil-solid.svg') }}" alt=""></a>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -32,15 +33,17 @@
                                 <table class="table table-hover text-nowrap">
                                     <tbody>
                                     <tr>
-                                        <td>Название</td>
                                         <td>Id</td>
+                                        <td>Название</td>
+                                        <td>Описание</td>
                                         <th>Цена</th>
                                         <th>Кол-во на складе</th>
                                         <th>Категория</th>
                                     </tr>
                                     <tr>
-                                        <td>{{ $product->title }}</td>
                                         <td>{{ $product->id }}</td>
+                                        <td>{{ $product->title }}</td>
+                                        <td>{{ $product->description }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->count }}</td>
                                         <td>{{ $product->category_id }}</td>
