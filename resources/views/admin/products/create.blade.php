@@ -29,35 +29,42 @@
                         <form action="{{ route('admin.product.store') }}" class="w-25" method="POST">
                             @csrf
                             <div class="form-group">
-                                <input type="text" value="{{ old('title') }}" class="form-control" name="title" placeholder="Название товара">
+                                <input type="text" value="{{ old('title') }}" class="form-control" name="title"
+                                       placeholder="Название товара">
                             </div>
                             @error('title')
                             <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
-                                <textarea class="form-control" name="description" placeholder="описание">{{ old('description') }}</textarea>
+                                <textarea class="form-control" name="description"
+                                          placeholder="описание">{{ old('description') }}</textarea>
                             </div>
                             @error('description')
                             <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
-                                <input type="text" value="{{ old('price') }}" class="form-control" name="price" placeholder="Цена">
+                                <input type="text" value="{{ old('price') }}" class="form-control" name="price"
+                                       placeholder="Цена">
                             </div>
                             @error('price')
                             <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
-                                <input type="text" value="{{ old('count') }}" class="form-control" name="count" placeholder="Кол-во на складе">
+                                <input type="text" value="{{ old('count') }}" class="form-control" name="count"
+                                       placeholder="Кол-во на складе">
                             </div>
                             @error('count')
                             <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
-                                <input type="text" value="{{ old('category_id') }}" class="form-control" name="category_id" placeholder="Категория">
+                                <label for="category_id">Выбор категории</label>
+                                <select class="form-select" id="category" name="category_id">
+                                    @foreach($categories as $category)
+                                        <option {{ old('category_id') == $category->id ? ' selected': '' }}
+                                                value="{{ $category->id }}">{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            @error('category_id')
-                            <div class="mb-3 text-danger">{{ $message }}</div>
-                            @enderror
                             <input type="submit" class="btn btn-primary" value="Добавить">
                         </form>
                     </div>

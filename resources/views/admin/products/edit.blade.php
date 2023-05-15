@@ -38,7 +38,7 @@
                             @enderror
                             <div class="form-group">
                                 <textarea class="form-control" name="description"
-                                          placeholder="описание">{{ $product->descriprion }}</textarea>
+                                          placeholder="описание">{{ $product->description }}</textarea>
                             </div>
                             @error('description')
                             <div class="mb-3 text-danger">{{ $message }}</div>
@@ -58,12 +58,15 @@
                             <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
-                                <input type="text" value="{{ $product->category_id }}" class="form-control"
-                                       name="category_id" placeholder="Категория">
+                                <label for="category_id">Выбор категории</label>
+                                <select class="form-select" id="category" name="category_id">
+                                    @foreach($categories as $category)
+                                        <option
+                                            {{ $category->id == $product->category_id ? ' selected' : ''}}
+                                            value="{{ $category->id }}">{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            @error('category_id')
-                            <div class="mb-3 text-danger">{{ $message }}</div>
-                            @enderror
                             <input type="submit" class="btn btn-primary" value="Редактировать">
                         </form>
                     </div>
