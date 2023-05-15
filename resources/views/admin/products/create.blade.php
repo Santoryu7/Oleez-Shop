@@ -26,7 +26,7 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('admin.product.store') }}" class="w-25" method="POST">
+                        <form action="{{ route('admin.product.store') }}" class="w-25" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <input type="text" value="{{ old('title') }}" class="form-control" name="title"
@@ -56,6 +56,18 @@
                             @error('count')
                             <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
+                            <div class="form-group">
+                                <label for="exampleInputFile">Выбор изображения</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="image">
+                                        <label class="custom-file-label">Выберите фото</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Добавить</span>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="category_id">Выбор категории</label>
                                 <select class="form-select" id="category" name="category_id">
