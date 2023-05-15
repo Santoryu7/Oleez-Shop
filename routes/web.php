@@ -38,6 +38,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::post('/', 'StoreController')->name('admin.product.store');
         Route::get('/{product}', 'ShowController')->name('admin.product.show');
         Route::get('/{product}/edit', 'EditController')->name('admin.product.edit');
+        Route::patch('/{product}', 'UpdateController')->name('admin.product.update');
     });
 });
 
