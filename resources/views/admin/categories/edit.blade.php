@@ -33,7 +33,7 @@
                                 <input type="text" class="form-control" name="title" placeholder="Название категории" value="{{ $category->title }}">
                             </div>
                             @error('title')
-                            <div class="mb-3 text-danger">{{ $message }}</div>
+                            <div class="mb-3 text-danger">Это поле необходимо заполнить</div>
                             @enderror
                             <input type="submit" class="btn btn-primary" value="Редактировать">
                         </form>

@@ -13,7 +13,7 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        $data['image'] = Storage::put('/images', $data['image']);;
+        $data['image'] = Storage::disk('public')->put('/images', $data['image']);;
 
         Product::firstOrCreate($data);
         return redirect()->route('admin.product.index');
