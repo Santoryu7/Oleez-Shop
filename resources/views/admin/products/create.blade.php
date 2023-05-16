@@ -33,41 +33,36 @@
                                        placeholder="Название товара">
                             </div>
                             @error('title')
-                            <div class="mb-3 text-danger">{{ $message }}</div>
+                            <div class="mb-3 text-danger">Это поле необходимо заполнить</div>
                             @enderror
                             <div class="form-group">
                                 <textarea class="form-control" name="description"
                                           placeholder="описание">{{ old('description') }}</textarea>
                             </div>
                             @error('description')
-                            <div class="mb-3 text-danger">{{ $message }}</div>
+                            <div class="mb-3 text-danger">Это поле необходимо заполнить</div>
                             @enderror
                             <div class="form-group">
                                 <input type="text" value="{{ old('price') }}" class="form-control" name="price"
                                        placeholder="Цена">
                             </div>
                             @error('price')
-                            <div class="mb-3 text-danger">{{ $message }}</div>
+                            <div class="mb-3 text-danger">Это поле необходимо заполнить</div>
                             @enderror
                             <div class="form-group">
                                 <input type="text" value="{{ old('count') }}" class="form-control" name="count"
                                        placeholder="Кол-во на складе">
                             </div>
                             @error('count')
-                            <div class="mb-3 text-danger">{{ $message }}</div>
+                            <div class="mb-3 text-danger">Это поле необходимо заполнить</div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputFile">Выбор изображения</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="image">
-                                        <label class="custom-file-label">Выберите фото</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Добавить</span>
-                                    </div>
-                                </div>
+                                    <label for="formFile" class="form-label">Выбор изображения</label>
+                                    <input class="form-control" type="file" id="formFile" name="image">
                             </div>
+                            @error('image')
+                            <div class="mb-3 text-danger">Выберите картинку</div>
+                            @enderror
                             <div class="form-group">
                                 <label for="category_id">Выбор категории</label>
                                 <select class="form-select" id="category" name="category_id">
