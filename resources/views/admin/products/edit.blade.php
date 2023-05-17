@@ -34,28 +34,28 @@
                                        value="{{ $product->title }}">
                             </div>
                             @error('title')
-                            <div class="mb-3 text-danger">Это поле необходимо заполнить</div>
+                            <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
                                 <textarea class="form-control" name="description"
                                           placeholder="описание">{{ $product->description }}</textarea>
                             </div>
                             @error('description')
-                            <div class="mb-3 text-danger">Это поле необходимо заполнить</div>
+                            <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
                                 <input type="text" value="{{ $product->price }}" class="form-control" name="price"
                                        placeholder="Цена">
                             </div>
                             @error('price')
-                            <div class="mb-3 text-danger">Это поле необходимо заполнить</div>
+                            <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
                                 <input type="text" value="{{ $product->count }}" class="form-control" name="count"
                                        placeholder="Кол-во на складе">
                             </div>
                             @error('count')
-                            <div class="mb-3 text-danger">Это поле необходимо заполнить</div>
+                            <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
                                 <div class="w-25">
@@ -65,7 +65,7 @@
                                 <input class="form-control" type="file" id="formFile" name="image">
                             </div>
                             @error('image')
-                            <div class="mb-3 text-danger">Выберите картинку</div>
+                            <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
                                 <label for="category_id">Выбор категории</label>
@@ -77,6 +77,9 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @error('category_id')
+                            <div class="mb-3 text-danger">{{ $message }}</div>
+                            @enderror
                             <input type="submit" class="btn btn-primary" value="Редактировать">
                         </form>
                     </div>

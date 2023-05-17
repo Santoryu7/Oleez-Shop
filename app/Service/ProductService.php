@@ -38,8 +38,6 @@ class ProductService
             DB::rollBack();
             abort(500);
         }
-
-
         return $product;
     }
 }
