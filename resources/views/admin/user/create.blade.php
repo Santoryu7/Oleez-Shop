@@ -46,6 +46,18 @@
                                 @error('password')
                                 <div class="mb-3 text-danger">{{ $message }}</div>
                                 @enderror
+                            <div class="form-group">
+                                <label for="category_id">Выберите роль</label>
+                                <select class="form-select" name="role">
+                                    @foreach($roles as $id => $role)
+                                        <option {{ old('role_id') == $id ? ' selected': '' }}
+                                                value="{{ $id }}">{{ $role }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('role')
+                            <div class="mb-3 text-danger">{{ $message }}</div>
+                            @enderror
                             <input type="submit" class="btn btn-primary" value="Добавить">
                         </form>
                     </div>
