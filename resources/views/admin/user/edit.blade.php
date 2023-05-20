@@ -43,6 +43,21 @@
                             @error('email')
                             <div class="mb-3 text-danger">{{ $message }}</div>
                             @enderror
+                            <div class="form-group">
+                                <label for="category_id">Выберите роль</label>
+                                <select class="form-select" name="role">
+                                    @foreach($roles as $id => $role)
+                                        <option {{ $user->role == $id ? ' selected': '' }}
+                                                value="{{ $id }}">{{ $role }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('role')
+                            <div class="mb-3 text-danger">{{ $message }}</div>
+                            @enderror
+                            <div class="form-group">
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            </div>
                             <input type="submit" class="btn btn-primary" value="Редактировать">
                         </form>
                     </div>
