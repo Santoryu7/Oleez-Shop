@@ -43,6 +43,12 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
+            "sendmail" => "/usr/sbin/sendmail -bs",
+            "pretend" => false,
+            "from" => array(
+                "address" => "john.doe@example.org",
+                "name" => "John Doe"
+            ),
         ],
 
         'ses' => [
