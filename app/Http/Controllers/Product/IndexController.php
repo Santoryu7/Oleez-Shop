@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Main;
+namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -10,7 +10,8 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        return redirect()->route('product.index');
+        $products = Product::paginate(12);
+        return view('product.index', compact('products'));
     }
 
 

@@ -17,6 +17,12 @@ Route::group(['namespace' => 'Main'], function () {
     Route::get('/', 'IndexController');
 });
 
+Route::group(['namespace' => 'Product', 'prefix' => 'products'], function () {
+    Route::get('/', 'IndexController')->name('product.index');
+    Route::get('/{product}', 'ShowController')->name('product.show');
+});
+
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function () {
     Route::group(['namespace' => 'Main'], function () {
         Route::get('/', 'IndexController')->name('admin.main.index');
