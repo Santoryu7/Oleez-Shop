@@ -13,4 +13,8 @@ class Product extends Model
 
     protected $table = 'products';
     protected $guarded = false;
+
+    public function comments() {
+        return $this->hasMany('App\Models\Comment');
+    }
 }
