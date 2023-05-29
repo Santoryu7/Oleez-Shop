@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <script src="{{ asset('assets/vendors/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/loader.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('./assets/vendors/fancybox/jquery.fancybox.min.css') }}">
 </head>
 
 <body>
@@ -191,6 +192,7 @@
 <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/vendors/slick-carousel/slick.min.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
+<script src="{{ asset('assets/vendors/fancybox/jquery.fancybox.min.js') }}"></script>
 <script>
     new WOW().init();
 </script>

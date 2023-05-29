@@ -43,17 +43,17 @@
                 <h3>Похожие товары</h3>
             </div>
             <div class="row">
-                @foreach($relatedProducts as $product)
-                    <div class="shop-page mr-xl-5">
+                @foreach($relatedProducts as $oneProduct)
+                    <div class="shop-page p-0 mr-xl-5">
                         <div class="post-header wow fadeInUp mb-3">
                             <div class="product-card">
-                                <a href="{{ route('product.show', $product->id) }}">
+                                <a href="{{ route('product.show', $oneProduct->id) }}">
                                     <div class="product-thumbnail-wrapper">
-                                        <img src="{{ asset('storage/' . $product->image) }}" alt="product"
+                                        <img src="{{ asset('storage/' . $oneProduct->image) }}" alt="product"
                                              class="product-thumbnail">
                                     </div>
-                                    <h5 class="product-title">{{ $product->title }}</h5>
-                                    <p class="product-price">{{ $product->price . ' $' }}</p>
+                                    <h5 class="product-title">{{ $oneProduct->title }}</h5>
+                                    <p class="product-price">{{ $oneProduct->price . ' $' }}</p>
                                     <div class="btn-wrapper">
                                         <button class="btn btn-add-to-cart">Добавить в корзину</button>
                                     </div>
@@ -62,9 +62,35 @@
                         </div>
                     </div>
                 @endforeach
-
             </div>
-        </div>
+            <div class="row">
+                <section class="comment-list">
+                    <h2>Отзывы  ({{ $comments->count() }})</h2>
+                        @foreach($comments as $comment)
+                    <div class="comment-text">
+                        <span class="username">
+                            <div>
+                                {{ $comment->user->name }}
+                            </div>
+                            <span class="text-muted float-right">{{ $comment->dateAsCarbon->diffForHumans() }}</span>
+                        </span>
+                        {{ $comment->message }}
+                    </div>
+                    @endforeach
+                </section>
+            </div>
+            <div class="row">
+                <div class="comment-text">
+                    <form action="{{ route('product.comment.store', $product->id ) }}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <div class="form-group">
+                            <input name="message" type="text" class="form-control" placeholder="Оставьте свой комментарий">
+                        </div>
+                        <input type="submit" value="Отправить" class="btn btn-warning">
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
 @endsection

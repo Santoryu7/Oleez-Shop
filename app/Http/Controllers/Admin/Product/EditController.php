@@ -12,7 +12,6 @@ class EditController extends BaseController
     public function __invoke(Product $product)
     {
         $categories = Category::all();
-//        dd($product);
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
