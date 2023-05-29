@@ -29,7 +29,7 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>11</h3>
+                                <h3>{{ $commentsCount }}</h3>
                                 <p>Комментарии</p>
                             </div>
                             <div class="icon">
