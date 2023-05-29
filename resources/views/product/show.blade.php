@@ -3,7 +3,7 @@
     <main class="blog-post-single">
         <div class="container">
             <h4 class="post-title wow fadeInUp"
-                style="visibility: visible; animation-name: fadeInUp;">{{ $product->category_id }}</h4>
+                style="visibility: visible; animation-name: fadeInUp;">@foreach($category as $cat) {{ $cat->title }} @endforeach</h4>
             <div class="row mb-5">
                 <div class="col-md-8 blog-post-wrapper">
                     <div class="post-header wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
@@ -47,7 +47,7 @@
                     <div class="shop-page p-0 mr-xl-5">
                         <div class="post-header wow fadeInUp mb-3">
                             <div class="product-card">
-                                <a href="{{ route('product.show', $oneProduct->id) }}">
+                                <a class="text-decoration-none text-dark" href="{{ route('product.show', $oneProduct->id) }}">
                                     <div class="product-thumbnail-wrapper">
                                         <img src="{{ asset('storage/' . $oneProduct->image) }}" alt="product"
                                              class="product-thumbnail">
@@ -64,33 +64,33 @@
                 @endforeach
             </div>
             <div class="row">
-                <section class="comment-list">
-                    <h2>Отзывы  ({{ $comments->count() }})</h2>
-                        @foreach($comments as $comment)
-                    <div class="comment-text">
+                <section class="comment-list mb-3">
+                    <div class="title">
+                    <h2>Отзывы ({{ $comments->count() }})</h2>
+                    </div>
+                    @foreach($comments as $comment)
+                        <div class="comment-text mt-3">
                         <span class="username">
-                            <div>
+                            <h5>
                                 {{ $comment->user->name }}
-                            </div>
-                            <span class="text-muted float-right">{{ $comment->dateAsCarbon->diffForHumans() }}</span>
+                            </h5>
+                            <span class="text-muted float-right ml-2">{{ $comment->dateAsCarbon->diffForHumans() }}</span>
                         </span>
-                        {{ $comment->message }}
+                            {{ $comment->message }}
                     </div>
                     @endforeach
                 </section>
             </div>
-            <div class="row">
-                <div class="comment-text">
+                <div class="comment-text mb-3">
                     <form action="{{ route('product.comment.store', $product->id ) }}" method="POST">
                         @csrf
                         @method('POST')
-                        <div class="form-group">
+                        <div class="form-group w-75">
                             <input name="message" type="text" class="form-control" placeholder="Оставьте свой комментарий">
                         </div>
                         <input type="submit" value="Отправить" class="btn btn-warning">
                     </form>
                 </div>
-            </div>
         </div>
     </main>
 @endsection

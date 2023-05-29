@@ -4,13 +4,12 @@
     <main class="shop-page">
         <div class="container">
             <div class="page-header wow fadeInUp">
-                <h2 class="page-title">Shop</h2>
-                <p class="result-count">Showing 12 results</p>
+                <h2 class="page-title">Показано 12 результатов</h2>
             </div>
             <div class="row">
                 @foreach($products as $product)
                     <div class="col-md-4 product-card wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                        <a href="{{ route('product.show', $product->id) }}">
+                        <a class="text-decoration-none text-dark" href="{{ route('product.show', $product->id) }}">
                             <div class="product-thumbnail-wrapper">
                                 <img src="{{ asset('storage/' . $product->image) }}" alt="product"
                                      class="product-thumbnail">
