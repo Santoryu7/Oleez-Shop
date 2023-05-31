@@ -8,12 +8,12 @@
                     <h4>Выберите категорию</h4>
                     <select name="category_id" class="form-select form-select-sm" aria-label=".form-select-sm example">
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                            <option value="{{ $category->id }}" @if(isset($_GET['category_id'])) @if($_GET['category_id'] == $category->id) selected @endif @endif>{{ $category->title }}</option>
                         @endforeach
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Применить</button>
-                <a href="{{ route('product.index') }}" class="btn btn-danger">Сброс</a>
+                <a href="{{ route('product.index') }}" class="btn btn-info">Сброс</a>
             </form>
             <div class="page-header wow fadeInUp">
                 <h2 class="page-title">Показано {{ $products->count() }} результатов</h2>

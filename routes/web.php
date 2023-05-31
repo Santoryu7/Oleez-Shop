@@ -21,9 +21,6 @@ Route::group(['namespace' => 'Product', 'prefix' => 'products'], function () {
     Route::get('/', 'IndexController')->name('product.index');
     Route::get('/{product}', 'ShowController')->name('product.show');
 
-//    Route::group(['namespace' => 'Comment', 'prefix' => '{product}/comments'], function () {
-//        Route::post('/', 'StoreController')->name('product.comment.store');
-//    });
     Route::group(['namespace' => 'Comment', 'prefix' => '/{product}/comment'], function () {
         Route::get('/', 'StoreController')->name('product.comment.store');
     });
