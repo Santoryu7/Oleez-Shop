@@ -3,7 +3,7 @@
     <main class="blog-post-single">
         <div class="container">
             <h4 class="post-title wow fadeInUp"
-                style="visibility: visible; animation-name: fadeInUp;">@foreach($category as $cat) {{ $cat->title }} @endforeach</h4>
+                style="visibility: visible; animation-name: fadeInUp;">{{ $product->title }}</h4>
             <div class="row mb-5">
                 <div class="col-md-8 blog-post-wrapper">
                     <div class="post-header wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
@@ -11,13 +11,15 @@
                              class="post-featured-image">
                     </div>
                     <div class="post-content wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                        <h4>Описание товара</h4>
-                        <p>{{ $product->description }}</p>
+                        <div class="mb-3">
+                            <h2>Описание товара</h2>
+                        </div>
+                        <h4>{{ $product->description }}</h4>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="sidebar-widget wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                        <h5 class="widget-title">{{ $product->title }}</h5>
+                        <h3>Цена</h3>
                         <div class="widget-content">
                             <div>
                                 {{ '$ ' . $product->price }}
@@ -34,8 +36,14 @@
                         </div>
                     </div>
                     <div class="sidebar-widget wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                        <div class="shop-page p-0 m-0">
+                            <h3>Категория</h3>
+                            <h5 class="widget-title">@foreach($category as $cat) {{ $cat->title }} @endforeach</h5>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                         <h5 class="widget-title">Количество товара на складе</h5>
-                        <p class="post-tag">{{ $product->count }}</p>
+                        <p>{{ $product->count }}</p>
                     </div>
                 </div>
             </div>
@@ -47,7 +55,8 @@
                     <div class="shop-page p-0 mr-xl-5">
                         <div class="post-header wow fadeInUp mb-3">
                             <div class="product-card">
-                                <a class="text-decoration-none text-dark" href="{{ route('product.show', $oneProduct->id) }}">
+                                <a class="text-decoration-none text-dark"
+                                   href="{{ route('product.show', $oneProduct->id) }}">
                                     <div class="product-thumbnail-wrapper">
                                         <img src="{{ asset('storage/' . $oneProduct->image) }}" alt="product"
                                              class="product-thumbnail">
@@ -66,7 +75,7 @@
             <div class="row">
                 <section class="comment-list mb-3">
                     <div class="title">
-                    <h2>Отзывы ({{ $comments->count() }})</h2>
+                        <h2>Отзывы ({{ $comments->count() }})</h2>
                     </div>
                     @foreach($comments as $comment)
                         <div class="comment-text mt-3">
@@ -74,23 +83,27 @@
                             <h5>
                                 {{ $comment->user->name }}
                             </h5>
-                            <span class="text-muted float-right ml-2">{{ $comment->dateAsCarbon->diffForHumans() }}</span>
+                            <span
+                                class="text-muted float-right ml-2">{{ $comment->dateAsCarbon->diffForHumans() }}</span>
                         </span>
                             {{ $comment->message }}
-                    </div>
+                        </div>
                     @endforeach
                 </section>
             </div>
+            @auth()
                 <div class="comment-text mb-3">
                     <form action="{{ route('product.comment.store', $product->id ) }}" method="POST">
                         @csrf
                         @method('POST')
                         <div class="form-group w-75">
-                            <input name="message" type="text" class="form-control" placeholder="Оставьте свой комментарий">
+                            <input name="message" type="text" class="form-control"
+                                   placeholder="Оставьте свой комментарий">
                         </div>
                         <input type="submit" value="Отправить" class="btn btn-warning">
                     </form>
                 </div>
+            @endauth
         </div>
     </main>
 @endsection
