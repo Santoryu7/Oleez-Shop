@@ -26,6 +26,10 @@ Route::group(['namespace' => 'Product', 'prefix' => 'products'], function () {
     });
 });
 
+Route::group(['namespace' => 'Search'], function () {
+    Route::get('/', 'IndexController')->name('search.index');
+});
+
 Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
     Route::group(['namespace' => 'Main', 'prefix' => 'main'], function () {
         Route::get('/', 'IndexController')->name('personal.main.index');
