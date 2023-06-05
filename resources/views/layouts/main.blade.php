@@ -63,11 +63,11 @@
                 </li>
             </ul>
             <ul class="navbar-nav d-none d-lg-flex">
-{{--                <li class="nav-item active">--}}
-{{--                    <a class="nav-link nav-link-btn" href="#!" data-toggle="searchModal">--}}
-{{--                        <img src="{{ asset('assets/images/search.svg') }}" alt="search">--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+                <li class="nav-item active">
+                    <a class="nav-link nav-link-btn" href="#" data-toggle="searchModal">
+                        <img src="{{ asset('assets/images/search.svg') }}" alt="search">
+                    </a>
+                </li>
 {{--                <li class="nav-item nav-item-cart">--}}
 {{--                    <a class="nav-link nav-link-btn" href="#!">--}}
 {{--                        <span class="cart-item-count">0</span>--}}
@@ -160,9 +160,9 @@
     <button type="button" class="close" aria-label="Close" data-dismiss="searchModal">
         <span aria-hidden="true">&times;</span>
     </button>
-    <form action="index.html" method="get" class="oleez-overlay-search-form">
+    <form action="{{ route('search.index') }}" method="get" class="oleez-overlay-search-form">
         <label for="search" class="sr-only">Search</label>
-        <input type="search" class="oleez-overlay-search-input" id="search" name="search" placeholder="Search here">
+        <input type="search" class="oleez-overlay-search-input" name="title" placeholder="Поиск товара">
     </form>
 </div>
 <script src="{{ asset('assets/vendors/popper.js/popper.min.js') }}"></script>
