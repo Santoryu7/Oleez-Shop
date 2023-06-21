@@ -8,7 +8,8 @@
                     <h4>Выберите категорию</h4>
                     <select name="category_id" class="form-select form-select-sm" aria-label=".form-select-sm example">
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}" @if(isset($_GET['category_id'])) @if($_GET['category_id'] == $category->id) selected @endif @endif>{{ $category->title }}</option>
+                            <option value="{{ $category->id }}"
+                                    @if(isset($_GET['category_id'])) @if($_GET['category_id'] == $category->id) selected @endif @endif>{{ $category->title }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -29,10 +30,15 @@
                             </div>
                             <h5 class="product-title">{{ $product->title }}</h5>
                             <p class="product-price">{{ $product->price . ' $' }}</p>
-                            <div class="btn-wrapper">
-                                <button class="btn btn-add-to-cart">Добавить в корзину</button>
-                            </div>
                         </a>
+                            <div class="addcart">
+                                <form action="{{ route('cart.index', $product->id) }}" method="POST">
+                                    @csrf
+                                    <input type="number" value="1" min="1" class="form-control w-50 mb-3 text-center btn border" name="quantity">
+                                    <br>
+                                    <button class="btn btn-add-to-cart">Добавить в корзину</button>
+                                </form>
+                            </div>
                     </div>
                 @endforeach
             </div>

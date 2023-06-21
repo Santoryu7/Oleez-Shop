@@ -29,8 +29,12 @@
                     <div class="sidebar-widget wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                         <div class="shop-page p-0 m-0">
                             <div class="product-card m-5">
-                                <div class="btn-wrapper">
-                                    <button class="btn btn-add-to-cart">Добавить в корзину</button>
+                                <div class="addcart">
+                                    <form action="{{ route('cart.index', $product->id) }}" method="POST">
+                                        @csrf
+                                        <input type="number" value="1" min="1" class="form-control w-50 mb-3 text-center btn border" name="quantity">
+                                        <button class="btn btn-add-to-cart">Добавить в корзину</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

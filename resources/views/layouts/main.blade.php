@@ -68,12 +68,11 @@
                         <img src="{{ asset('assets/images/search.svg') }}" alt="search">
                     </a>
                 </li>
-{{--                <li class="nav-item nav-item-cart">--}}
-{{--                    <a class="nav-link nav-link-btn" href="#!">--}}
-{{--                        <span class="cart-item-count">0</span>--}}
-{{--                        <img src="{{ asset('assets/images/shopping-cart.svg') }}" alt="cart">--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+                <li class="nav-item nav-item-cart">
+                    <a class="nav-link nav-link-btn" href="{{ url('cart') }}">
+                        <img src="{{ asset('assets/images/shopping-cart.svg') }}" alt="cart">
+                    </a>
+                </li>
 {{--                <li class="nav-item ml-5">--}}
 {{--                    <a class="nav-link pr-0 nav-link-btn" href="#!" data-toggle="offCanvasMenu">--}}
 {{--                        <img src="{{ asset('assets/images/social icon@2x.svg') }}" alt="social-nav-toggle">--}}
