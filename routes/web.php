@@ -30,6 +30,11 @@ Route::group(['namespace' => 'Search'], function () {
     Route::get('/', 'IndexController')->name('search.index');
 });
 
+Route::group(['namespace' => 'Cart'], function () {
+    Route::post('/addcart/{id}', 'IndexController')->name('cart.index');
+    Route::get('/cart', 'HomeController');
+});
+
 Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
     Route::group(['namespace' => 'Main', 'prefix' => 'main'], function () {
         Route::get('/', 'IndexController')->name('personal.main.index');
