@@ -22,7 +22,7 @@ Route::group(['namespace' => 'Product', 'prefix' => 'products'], function () {
     Route::get('/{product}', 'ShowController')->name('product.show');
 
     Route::group(['namespace' => 'Comment', 'prefix' => '/{product}/comment'], function () {
-        Route::get('/', 'StoreController')->name('product.comment.store');
+        Route::post('/', 'StoreController')->name('product.comment.store');
     });
 });
 
@@ -31,8 +31,9 @@ Route::group(['namespace' => 'Search'], function () {
 });
 
 Route::group(['namespace' => 'Cart'], function () {
-    Route::post('/addcart/{id}', 'IndexController')->name('cart.index');
-    Route::get('/cart', 'HomeController');
+    Route::post('/cart/{id}', 'IndexController')->name('cart.index');
+    Route::get('/cart', 'HomeController')->name('cart.home');;
+    Route::delete('/cart/{id}', 'DeleteController')->name('cart.delete');
 });
 
 Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {

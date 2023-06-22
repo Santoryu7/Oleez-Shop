@@ -20,6 +20,7 @@
                         <th>Название товара</th>
                         <th>Цена</th>
                         <th>Кол-во товара</th>
+                        <th>Удаление</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,11 +36,20 @@
                             <td>{{$prop->product_title}}</td>
                             <td>{{$prop->price}} $</td>
                             <td>{{$prop->quantity}}</td>
+                            <td>
+                                <form action="{{ route('cart.delete', $prop->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="border-0 bg-transparent">
+                                        <img width="20" height="20" src="{{ asset('img/trash-solid.svg') }}" alt="">
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     <tr>
                         <th colspan="4" class="text-right">Итого</th>
-                        <th>{{ number_format($basketCost, 2, '.', '') }}</th>
+                        <th>{{ number_format($basketCost, 2, '.', '') }} $</th>
                     </tr>
                     </tbody>
                 </table>
