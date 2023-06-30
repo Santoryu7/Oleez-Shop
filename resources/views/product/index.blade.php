@@ -1,6 +1,8 @@
 @extends('layouts.main')
 @section('content')
 
+
+
     <main class="shop-page">
         <div class="container">
             <form action="{{ route('product.index') }}" method="get">

@@ -16,14 +16,36 @@ class IndexController extends Controller
             $user = auth()->user();
             $product = Product::find($id);
 
-            $cart = new cart;
-            $cart->name = $user->name;
-            $cart->product_title = $product->title;
-            $cart->quantity = $request->quantity;
-            $cart->price = $product->price;
-            $cart->save();
+            $properties = Cart::where('name', '=', $user->name)->get();
 
-            return redirect()->back();
+            if ($properties->all() == []) {
+                $cart = new cart;
+                $cart->name = $user->name;
+                $cart->product_title = $product->title;
+                $cart->quantity = $request->quantity;
+                $cart->price = $product->price;
+                $cart->save();
+
+                return redirect()->back()->with('message', 'Товар добавлен в корзину');
+            } else {
+                foreach ($properties as $property)
+                    if ($product->title == $property->product_title) {
+                        $number = $property->quantity;
+                        (int)$number += (int)$request->quantity;
+                        $property->quantity = (string)$number;
+                        $property->save();
+
+                        return redirect()->back()->with('message', 'Товар добавлен в корзину');
+                    }
+                        $cart = new cart;
+                        $cart->name = $user->name;
+                        $cart->product_title = $product->title;
+                        $cart->quantity = $request->quantity;
+                        $cart->price = $product->price;
+                        $cart->save();
+
+                        return redirect()->back()->with('message', 'Товар добавлен в корзину');
+            }
         } else {
             return redirect('login');
         }

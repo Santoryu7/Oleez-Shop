@@ -17,7 +17,8 @@
 <div class="oleez-loader"></div>
 <header class="oleez-header">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="{{ route('product.index') }}"><img src="{{ asset('assets/images/Logo_2.svg') }}" alt="Oleez"></a>
+        <a class="navbar-brand" href="{{ route('product.index') }}"><img src="{{ asset('assets/images/Logo_2.svg') }}"
+                                                                         alt="Oleez"></a>
         <ul class="nav nav-actions d-lg-none ml-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="#!" data-toggle="searchModal">
@@ -61,6 +62,19 @@
                         <a class="nav-link" href="{{ route('login') }}">Войти</a>
                     @endguest
                 </li>
+                    @can('view', auth()->user())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.main.index') }}">Admin</a>
+                        </li>
+                    @endcan
+                @auth()
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <input type="submit" class="btn nav-link text-danger" value="Выйти">
+                        </form>
+                    </li>
+                @endauth
             </ul>
             <ul class="navbar-nav d-none d-lg-flex">
                 <li class="nav-item active">
@@ -73,14 +87,16 @@
                         <img src="{{ asset('assets/images/shopping-cart.svg') }}" alt="cart">
                     </a>
                 </li>
-{{--                <li class="nav-item ml-5">--}}
-{{--                    <a class="nav-link pr-0 nav-link-btn" href="#!" data-toggle="offCanvasMenu">--}}
-{{--                        <img src="{{ asset('assets/images/social icon@2x.svg') }}" alt="social-nav-toggle">--}}
-{{--                    </a>--}}
-{{--                </li>--}}
             </ul>
         </div>
     </nav>
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+
+            {{ session()->get('message') }}
+        </div>
+    @endif
 </header>
 
 @yield('content')
