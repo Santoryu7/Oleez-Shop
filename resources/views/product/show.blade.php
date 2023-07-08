@@ -7,7 +7,7 @@
             <div class="row mb-5">
                 <div class="col-md-8 blog-post-wrapper">
                     <div class="post-header wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="blog post"
+                        <img src="{{ asset('storage/images/' . $product->image) }}" alt="blog post"
                              class="post-featured-image">
                     </div>
                     <div class="post-content wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
@@ -62,7 +62,7 @@
                                 <a class="text-decoration-none text-dark"
                                    href="{{ route('product.show', $oneProduct->id) }}">
                                     <div class="product-thumbnail-wrapper">
-                                        <img src="{{ asset('storage/' . $oneProduct->image) }}" alt="product"
+                                        <img src="{{ asset('storage/images/' . $oneProduct->image) }}" alt="product"
                                              class="product-thumbnail">
                                     </div>
                                     <h5 class="product-title">{{ $oneProduct->title }}</h5>

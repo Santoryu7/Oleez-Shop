@@ -27,7 +27,7 @@
                          style="visibility: visible; animation-name: fadeInUp;">
                         <a class="text-decoration-none text-dark" href="{{ route('product.show', $product->id) }}">
                             <div class="product-thumbnail-wrapper">
-                                <img src="{{ asset('storage/' . $product->image) }}" alt="product"
+                                <img src="{{ asset('storage/images/' . $product->image) }}" alt="product"
                                      class="product-thumbnail">
                             </div>
                             <h5 class="product-title">{{ $product->title }}</h5>
