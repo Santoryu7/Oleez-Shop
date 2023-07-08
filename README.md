@@ -1,3 +1,7 @@
+# Oleez-Shop
+
+Запуск проекта
+
 Клонируем себе репозиторий:    
 ```git clone https://github.com/Santoryu7/Oleez-Shop.git ```   
 и переходим в папку с проектом    
