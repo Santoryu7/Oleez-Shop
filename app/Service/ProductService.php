@@ -16,6 +16,7 @@ class ProductService
             if (isset($data['image'])) {
                 $data['image'] = Storage::disk('public')->put('/images', $data['image']);;
             }
+            $data['image'] = str_replace('images/', '', $data['image']);
             Product::firstOrCreate($data);
             DB::commit();
         } catch (Exception $exception) {
@@ -32,6 +33,7 @@ class ProductService
             if (isset($data['image'])) {
                 $data['image'] = Storage::disk('public')->put('/images', $data['image']);;
             }
+            $data['image'] = str_replace('images/', '', $data['image']);
             $product->update($data);
             DB::commit();
         } catch (Exception $exception) {
